@@ -35,9 +35,9 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                 case 1 ->
                      showMenuEstudiantes();
                 case 2 ->
-                      showMenuAsignatura();
+                       showMenuProgramaAcademico();
                 case 3 ->
-                     showMenuProgramaAcademico();
+                        showMenuAsignatura();
                 case 4 ->
                         showMenuEstudiantesMatriculados();
                 case 0 ->
@@ -66,23 +66,90 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                     modificarEstudiante();
             case 14 ->
                     eliminarEstudiante();
-            case 9 -> runMenu();
+            case 9 ->  {
+                System.out.println("¡Atras!");
+                return; // Salimos del método runMenu()
+            }
             default ->
                 System.out.println("Opción no válida. Intente nuevamente.");
         }
         showMenuEstudiantes();
     }
 
-    public void showMenuAsignatura(){
-        view.showMenuAsignatura();
+    public void showMenuProgramaAcademico(){
+        int opcion;
+        view.showMenuProgramaAcademico();
+        opcion = leerOpcion();
+        switch (opcion) {
+            case 15 ->
+                    crearProgramaAcademico();
+            case 16 ->
+                    modificarProgramaAcademico();
+            case 17 ->
+                    eliminarProgramaAcademico();
+            case 18 ->
+                    verProgramasAcademicosRegistrados();
+            case 8 -> {
+                System.out.println("¡Atras!");
+                return; // Salimos del método runMenu()
+            }
+            default ->
+                    System.out.println("Opción no válida. Intente nuevamente.");
+        }
+        showMenuProgramaAcademico();
+
     }
 
-    public void showMenuProgramaAcademico(){
-        view.showMenuProgramaAcademico();
+
+    public void showMenuAsignatura(){
+        int opcion;
+        view.showMenuAsignatura();
+        opcion = leerOpcion();
+        switch (opcion) {
+            case 19 ->
+                   crearAsignatura();
+            case 20 ->
+                    modificarAsignatura();
+            case 21 ->
+                   eliminarAsignatura();
+            case 22 ->
+                    verAsignaturasRegistradas();
+            case 7 -> {
+                System.out.println("¡Atras!");
+                return; // Salimos del método runMenu()
+            }
+            default ->
+                    System.out.println("Opción no válida. Intente nuevamente.");
+        }
+        showMenuAsignatura();
     }
+
 
     public void showMenuEstudiantesMatriculados(){
+        int opcion;
         view.showMenuEstudiantesMatricula();
+        opcion = leerOpcion();
+        switch (opcion) {
+            case 23 ->
+                    matricularEstudiante_programa();
+            case 24 ->
+                    verEstudiantesMatriculados_programa();
+            case 25 ->
+                    eliminar_Matricula_Estudiante_programa();
+            case 26 ->
+                    matricularEstudiante_asigantura();
+            case 27 ->
+                    verEstudiantesMatriculadosEnAsignatura();
+            case 28 ->
+                    eliminarEstudianteDeAsignatura();
+            case 6 -> {
+                System.out.println("¡Atras!");
+                return; // Salimos del método runMenu()
+            }
+            default ->
+                    System.out.println("Opción no válida. Intente nuevamente.");
+        }
+        showMenuEstudiantesMatriculados();
     }
     private static int leerOpcion() {
         int opcion;
@@ -92,7 +159,7 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                 String input = reader.readLine().trim();
                 if (!input.isEmpty()) {
                     opcion = Integer.parseInt(input);
-                    if (opcion >= 0 && opcion <= 20) {
+                    if (opcion >= 0 && opcion <= 27) {
                         break;
                     } else {
                         System.out.println("Opción no válida. Intente nuevamente.");
