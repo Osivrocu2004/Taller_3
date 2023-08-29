@@ -8,21 +8,21 @@ public class View {
         "2. Acciones para Programas" + "\n" +
         "3. Acciones para Asignatura" + "\n" +
         "0. Salir" + "\n";
-    public static final String MENU_ESTUDIANTES= "1.1. Ver estudiantes registrados" + "\n" +
-            "1.2. Registrar un nuevo estudiante" + "\n" +
-            "1.3. Modificar registro de estudiante" + "\n" +
-            "1.4. Eliminar registro de estudiante" + "\n"+
+    public static final String MENU_ESTUDIANTES= "11. Ver estudiantes registrados" + "\n" +
+            "12. Registrar un nuevo estudiante" + "\n" +
+            "13. Modificar registro de estudiante" + "\n" +
+            "14. Eliminar registro de estudiante" + "\n"+
             "0. Salir" + "\n";
 
     public static final String MENU_PROGRAMA_ACADEMICO =  "1.5. Crear programa académico" + "\n" +
-            "1.6. Modificar programa academico" + "\n" +
-            "1.7. Eliminar programa académico" + "\n" +
-            "1.8. Ver programas académicos registrados" + "\n" +
+            "15. Modificar programa academico" + "\n" +
+            "16. Eliminar programa académico" + "\n" +
+            "17. Ver programas académicos registrados" + "\n" +
             "0. Salir" + "\n";
     public static final String MENU_ASIGNATURA =   "9. Crear asignatura" + "\n" +
-            "1.10. Modificar asignatura" + "\n" +
-            "1.11. Eliminar asignatura" + "\n" +
-            "1.12. Ver asignaturas registradas" + "\n"+
+            "18. Modificar asignatura" + "\n" +
+            "19. Eliminar asignatura" + "\n" +
+            "20. Ver asignaturas registradas" + "\n"+
             "0. Salir" + "\n";
 
     public static final String MENU_ESTUDIANTES_MATRICULA =

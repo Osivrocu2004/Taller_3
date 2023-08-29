@@ -40,56 +40,33 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                      showMenuProgramaAcademico();
                 case 4 ->
                         showMenuEstudiantesMatriculados();
-                case 5 ->
-                        crearProgramaAcademico();
-                case 6 ->
-                        modificarProgramaAcademico();
-                case 7 ->
-                        eliminarProgramaAcademico();
-                case 8 ->
-                        verProgramasAcademicosRegistrados();
-                case 9 ->
-                        crearAsignatura();
-                case 10 ->
-                        modificarAsignatura();
-                case 11 ->
-                        eliminarAsignatura();
-                case 12 ->
-                        verAsignaturasRegistradas();
-                case 13 ->
-                        matricularEstudiante_programa();
-                case 14 ->
-                        verEstudiantesMatriculados_programa();
-                case 15 ->
-                        eliminar_Matricula_Estudiante_programa();
-                case 16 ->
-                        matricularEstudiante_asigantura();
-                case 17 ->
-                        verEstudiantesMatriculadosEnAsignatura();
-                case 18 ->
-                        eliminarEstudianteDeAsignatura();
                 case 0 ->
-                        System.out.println("¡Hasta luego!");
+                {
+                    System.out.println("¡Hasta luego!");
+                    return; // Salimos del método runMenu()
+                }
                 default ->
                         System.out.println("Opción no válida. Intente nuevamente.");
-            }
-            runMenu();
+
+            } runMenu();
+
         //reader.close(); // Cerrar el BufferedReader al finalizar
     }
 
     public void showMenuEstudiantes(){
-        String opcion;
+        int opcion;
         view.showMenuEstudiantes();
-        opcion = leerOpcionString();
+        opcion = leerOpcion();
         switch (opcion) {
-            case "1.1" ->
+            case 11 ->
                     verEstudiantesRegistrados();
-            case "1.2" ->
+            case 12 ->
                     registrarEstudiante();
-            case "1.3"->
+            case 13 ->
                     modificarEstudiante();
-            case "1.4" ->
+            case 14 ->
                     eliminarEstudiante();
+            case 9 -> runMenu();
             default ->
                 System.out.println("Opción no válida. Intente nuevamente.");
         }
@@ -115,30 +92,7 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                 String input = reader.readLine().trim();
                 if (!input.isEmpty()) {
                     opcion = Integer.parseInt(input);
-                    if (opcion >= 0 && opcion <= 18) {
-                        break;
-                    } else {
-                        System.out.println("Opción no válida. Intente nuevamente.");
-                    }
-                } else {
-                    System.out.println("No se permiten campos vacíos. Intente nuevamente.");
-                }
-            } catch (NumberFormatException | IOException e) {
-                System.out.println("Error: Ingrese un número válido.");
-            }
-        }
-        return opcion;
-    }
-    private static String leerOpcionString() {
-        String opcion;
-        while (true) {
-            try {
-                System.out.print("Ingrese una opción: ");
-                String input = reader.readLine().trim();
-                if (!input.isEmpty()) {
-                    opcion = (input);
-                    int auxOption = Integer.parseInt(input);
-                    if (auxOption >= 0 && auxOption<= 18) {
+                    if (opcion >= 0 && opcion <= 20) {
                         break;
                     } else {
                         System.out.println("Opción no válida. Intente nuevamente.");
