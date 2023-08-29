@@ -788,11 +788,28 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
         }
     }
 
+  /*  public static boolean checkStudent() {
+        if(programaAcademico == null) {
+            return false;
+        }else{
+        for (int i = 0; i <= estudiantes.size(); i++) {
+            for (int j = 0; j <= programaAcademico.size(); j++) {
+        if(estudiantes.get(i).getCodigoEstudiante().equals(programaAcademico.get(j).getEstudiantes_matriculados_programa().get(j).getCodigoEstudiante()));
+                    return true;  // El estudiante está inscrito en algún programa
+                }
+            }
+        }
+        return false; // El estudiante no está inscrito en ningún programa
+    }
+*/
     private static void matricularEstudiante_asigantura() {
         System.out.println("=== Matricular Estudiante en asignatura ===");
 
-        if (estudiantes.isEmpty()) {
-            System.out.println("No hay estudiantes registrados.");
+       /* if (checkStudent() == false) {
+            System.out.println("No hay estudiantes registrados en programas.");
+            return;
+        }*/if(estudiantes.isEmpty()){
+            System.out.println("No hay estudiantes matriculados");
             return;
         }
 
