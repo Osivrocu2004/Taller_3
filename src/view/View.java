@@ -27,15 +27,18 @@ public class View {
             "20. Modificar asignatura" + "\n" +
             "21. Eliminar asignatura" + "\n" +
             "22. Ver asignaturas registradas" + "\n"+
+            "23. Inscribir asignatura en programa" + "\n"+
+            "24. Ver asignaturas inscritas en programa" + "\n"+
+            "25. Eliminar asignaturas inscritas en programa" + "\n"+
             "7. Salir" + "\n";
 
     public static final String MENU_ESTUDIANTES_MATRICULA =
-            "23. Matricular estudiantes en programa" + "\n" +
-                    "24. Ver matricula de estudiantes en programa" + "\n" +
-                    "25. Eliminar estudiantes matricualados en programa" + "\n" +
-                    "26. Matricular estudiantes en asignatura" + "\n" +
-                    "27. Ver matricula de estudiantes en asignatura" + "\n" +
-                    "28. Eliminar estudiantes matricualados en asignatura" + "\n"+
+            "26. Matricular estudiantes en programa" + "\n" +
+                    "27. Ver matricula de estudiantes en programa" + "\n" +
+                    "28. Eliminar estudiantes matricualados en programa" + "\n" +
+                    "29. Matricular estudiantes en asignatura" + "\n" +
+                    "30. Ver matricula de estudiantes en asignatura" + "\n" +
+                    "31. Eliminar estudiantes matricualados en asignatura" + "\n"+
                     "6. Salir" + "\n";
 
     public void showMenu(){

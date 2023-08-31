@@ -114,6 +114,12 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                    eliminarAsignatura();
             case 22 ->
                     verAsignaturasRegistradas();
+            case 23 ->
+                    matricularPrograma_Asigantura();
+            case 24 ->
+                verAsignaturasInscritas_Programa();
+            case 25 ->
+                eliminarAsignatura_Programa();
             case 7 -> {
                 System.out.println("¡Atras!");
                 return; // Salimos del método runMenu()
@@ -130,17 +136,17 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
         view.showMenuEstudiantesMatricula();
         opcion = leerOpcion();
         switch (opcion) {
-            case 23 ->
-                    matricularEstudiante_programa();
-            case 24 ->
-                    verEstudiantesMatriculados_programa();
-            case 25 ->
-                    eliminar_Matricula_Estudiante_programa();
             case 26 ->
-                    matricularEstudiante_asigantura();
+                    matricularEstudiante_programa();
             case 27 ->
-                    verEstudiantesMatriculadosEnAsignatura();
+                    verEstudiantesMatriculados_programa();
             case 28 ->
+                    eliminar_Matricula_Estudiante_programa();
+            case 29 ->
+                    matricularEstudiante_asigantura();
+            case 30 ->
+                    verEstudiantesMatriculadosEnAsignatura();
+            case 31 ->
                     eliminarEstudianteDeAsignatura();
             case 6 -> {
                 System.out.println("¡Atras!");
@@ -159,7 +165,7 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
                 String input = reader.readLine().trim();
                 if (!input.isEmpty()) {
                     opcion = Integer.parseInt(input);
-                    if (opcion >= 0 && opcion <= 27) {
+                    if (opcion >= 0 && opcion <= 31) {
                         break;
                     } else {
                         System.out.println("Opción no válida. Intente nuevamente.");
@@ -788,28 +794,30 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
         }
     }
 
-  /*  public static boolean checkStudent() {
-        if(programaAcademico == null) {
+    public static boolean checkStudent() {
+        if (programaAcademico == null || estudiantes.isEmpty()) {
             return false;
-        }else{
-        for (int i = 0; i <= estudiantes.size(); i++) {
-            for (int j = 0; j <= programaAcademico.size(); j++) {
-        if(estudiantes.get(i).getCodigoEstudiante().equals(programaAcademico.get(j).getEstudiantes_matriculados_programa().get(j).getCodigoEstudiante()));
-                    return true;  // El estudiante está inscrito en algún programa
+        }
+
+        for (int i = 0; i < estudiantes.size(); i++) {
+            for (int j = 0; j < programaAcademico.size(); j++) {
+                List<Estudiante> estudiantesMatriculados = programaAcademico.get(j).getEstudiantes_matriculados_programa();
+
+                for (int k = 0; k < estudiantesMatriculados.size(); k++) {
+                    if (estudiantes.get(i).getCodigoEstudiante().equals(estudiantesMatriculados.get(k).getCodigoEstudiante())) {
+                        return true;  // El estudiante está inscrito en algún programa
+                    }
                 }
             }
         }
         return false; // El estudiante no está inscrito en ningún programa
     }
-*/
+
     private static void matricularEstudiante_asigantura() {
         System.out.println("=== Matricular Estudiante en asignatura ===");
 
-       /* if (checkStudent() == false) {
+        if (checkStudent() == false) {
             System.out.println("No hay estudiantes registrados en programas.");
-            return;
-        }*/if(estudiantes.isEmpty()){
-            System.out.println("No hay estudiantes matriculados");
             return;
         }
 
@@ -840,6 +848,40 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
         } else {
             asignaturaSeleccionada.Lista_estudiantes_asignatura(estudianteSeleccionado);
             System.out.println("Estudiante matriculado exitosamente en la asignatura.");
+        }
+    }
+
+    private static void matricularPrograma_Asigantura() {
+        System.out.println("=== Matricular asignatura en programa ===");
+
+
+        verAsignaturasRegistradas();
+
+        System.out.print("Ingrese el índice de la asignatura que desea inscribir: ");
+        int indiceAsignatura = leerIndiceValido(asignatura.size());
+
+        Asignatura asignaturaSeleccionada = asignatura.get(indiceAsignatura);
+
+        if (programaAcademico.isEmpty()) {
+            System.out.println("No hay programas academicos registrados.");
+            return;
+        }
+
+        verProgramasAcademicosRegistrados();
+
+        System.out.print("Ingrese el índice del programa en el que desea matricular la asignatura: ");
+        int indicePrograma = leerIndiceValido(asignatura.size());
+
+        ProgramaAcademico programaSeleccionado = programaAcademico.get(indicePrograma);
+
+        // Validar si la asignatura ya esta inscrita en el programa
+        boolean asignaturaMatriculada = programaSeleccionado.getAsignaturas_programa().contains(programaSeleccionado);
+
+        if (asignaturaMatriculada) {
+            System.out.println("La asignatura ya esta inscrita en este programa");
+        } else {
+            programaSeleccionado.Asignaturas_programa(asignaturaSeleccionada);
+            System.out.println("Asignatura registrada exitosamente en el programa");
         }
     }
 
@@ -920,5 +962,68 @@ public class Main_BufferedReader_estudiantes_programa_matricula {
             }
         }
     }
+    private static void verAsignaturasInscritas_Programa() {
+        System.out.println("=== Asiganturas inscritas en Programa Académico ===");
+
+        if (programaAcademico.isEmpty()) {
+            System.out.println("No hay programas académicos registrados.");
+            return;
+        }
+
+        verProgramasAcademicosRegistrados();
+
+        System.out.print("Ingrese el índice del programa académico del cual desea ver las asignaturas inscritas: ");
+        int indicePrograma = leerIndiceValido(programaAcademico.size());
+
+        ProgramaAcademico programaSeleccionado = programaAcademico.get(indicePrograma);
+
+        if (programaSeleccionado.getAsignaturas_programa().isEmpty()) {
+            System.out.println("No hay asignaturas inscritas en este programa.");
+        } else {
+            System.out.println("Asignaturas inscritas en " + programaSeleccionado.getNombre_programa() + ":");
+            for (Asignatura asignatura1 : programaSeleccionado.getAsignaturas_programa()) {
+                System.out.println("- " + asignatura1.getNombre_asignatura() + " (" + asignatura1.getCodigo_asignatura() + ")");
+            }
+        }
+    }
+
+    private static void eliminarAsignatura_Programa() {
+        System.out.println("=== Eliminar Asignatura de Programa ===");
+
+        if (asignatura.isEmpty()) {
+            System.out.println("No hay asiganturas registradas.");
+            return;
+        }
+
+        verAsignaturasRegistradas();
+
+        System.out.print("Ingrese el índice de la asigantura que desea eliminar del programa: ");
+        int indiceAsignatura = leerIndiceValido(asignatura.size());
+
+        Asignatura asignaturaSeleccionada = asignatura.get(indiceAsignatura);
+
+        if (programaAcademico.isEmpty()) {
+            System.out.println("No hay programas academicos registrados.");
+            return;
+        }
+
+       verProgramasAcademicosRegistrados();
+
+        System.out.print("Ingrese el índice del programa del que desea eliminar la asigantura ");
+        int indicePrograma = leerIndiceValido(programaAcademico.size());
+
+        ProgramaAcademico programaSeleccionado = programaAcademico.get(indicePrograma);
+
+        boolean asignaturaInscrita = programaSeleccionado.getAsignaturas_programa().contains(asignaturaSeleccionada);
+
+        if (asignaturaInscrita) {
+            programaSeleccionado.getAsignaturas_programa().remove(asignaturaSeleccionada);
+            System.out.println("Asigantura eliminada exitosamente del programa.");
+        } else {
+            System.out.println("La asignatura no esta inscrita en este programa");
+        }
+    }
+
+
 
 }
